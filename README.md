@@ -8,9 +8,11 @@ Implementation of fundamental Data Structures laboratory programs in C as per th
 
 | File | Description | Key Operations |
 |------|-------------|----------------|
-| [`01_singly_linked_list.c`](01_singly_linked_list.c) | **Singly Linked List (SLL)** implementation | `insertBeginning`, `insertEnd`, `insertPosition`, `insertAfterValue`, `deleteBeginning`, `deleteEnd`, `deletePosition`, `deleteValue`, `display`, `search` |
-| [`02_stack_and_queue_using_linked_list.c`](02_stack_and_queue_using_linked_list.c) | **Stack & Queue using Singly Linked List** | **Stack (LIFO)**: `push`, `pop`, `peek`, `display`<br>**Queue (FIFO)**: `enqueue`, `dequeue`, `peek`, `display` |
-| [`03_vtu_student_sll_stack_queue.c`](03_vtu_student_sll_stack_queue.c) | **VTU Student SLL (Stack & Queue Demo)** | Student records (USN, Name, Branch, Sem, Phone) demonstrating LIFO (Stack) and FIFO (Queue) |
+| [`01_singly_linked_list.c`](01_singly_linked_list.c) | **Singly Linked List (SLL)** | `insertBeginning`, `insertEnd`, `insertPosition`, `insertAfterValue`, `deleteBeginning`, `deleteEnd`, `deletePosition`, `deleteValue`, `display`, `search` |
+| [`02_stack_using_linked_list.c`](02_stack_using_linked_list.c) | **Stack using Linked List (LIFO)** | `push()`, `pop()`, `peek()`, `display()` |
+| [`03_queue_using_linked_list.c`](03_queue_using_linked_list.c) | **Queue using Linked List (FIFO)** | `enqueue()`, `dequeue()`, `peek()`, `display()` |
+| [`02_stack_and_queue_using_linked_list.c`](02_stack_and_queue_using_linked_list.c) | **Combined Stack & Queue (SLL)** | Unified menu for both Stack & Queue via SLL |
+| [`03_vtu_student_sll_stack_queue.c`](03_vtu_student_sll_stack_queue.c) | **VTU Student SLL Demonstration** | Student records (USN, Name, Branch, Sem, Phone) demonstrating LIFO (Stack) and FIFO (Queue) |
 
 ---
 
@@ -22,23 +24,23 @@ gcc 01_singly_linked_list.c -o 01_singly_linked_list
 ./01_singly_linked_list
 ```
 
-### 2. Stack and Queue using Linked List
+### 2. Stack using Linked List
 ```bash
-gcc 02_stack_and_queue_using_linked_list.c -o 02_stack_and_queue_using_linked_list
-./02_stack_and_queue_using_linked_list
+gcc 02_stack_using_linked_list.c -o 02_stack_using_linked_list
+./02_stack_using_linked_list
 ```
 
-### 3. VTU Student SLL Demonstration
+### 3. Queue using Linked List
 ```bash
-gcc 03_vtu_student_sll_stack_queue.c -o 03_vtu_student_sll_stack_queue
-./03_vtu_student_sll_stack_queue
+gcc 03_queue_using_linked_list.c -o 03_queue_using_linked_list
+./03_queue_using_linked_list
 ```
 
 ---
 
 ## 📊 Sample Execution Outputs
 
-### 1. Singly Linked List Execution Output
+### 1. Singly Linked List
 ```text
 Linked List:
 HEAD -> 10 -> 20 -> 30 -> 35 -> 40 -> NULL
@@ -60,33 +62,57 @@ Searching 20:
 Value found at position 1
 ```
 
-### 2. Stack Operations (LIFO) Output
+### 2. Stack using Linked List (LIFO)
 ```text
-[SUCCESS] Pushed 10 onto the stack.
-[SUCCESS] Pushed 20 onto the stack.
-[SUCCESS] Pushed 30 onto the stack.
+===== STACK USING LINKED LIST =====
+1. Push
+2. Pop
+3. Peek
+4. Display
+5. Exit
+Enter your choice: 1
+Enter value: 10
+10 pushed into stack.
 
---- Stack Contents (Top to Bottom) ---
-[30] <-- TOP
-[20]
-[10]
-Total Elements in Stack: 3
+Enter your choice: 1
+Enter value: 20
+20 pushed into stack.
 
-Top element is: 30
-[SUCCESS] Popped 30 from the stack.
+Enter your choice: 4
+Stack elements:
+20
+10
+
+Enter your choice: 3
+Top element: 20
+
+Enter your choice: 2
+20 popped from stack.
 ```
 
-### 3. Queue Operations (FIFO) Output
+### 3. Queue using Linked List (FIFO)
 ```text
-[SUCCESS] Enqueued 100 into the queue.
-[SUCCESS] Enqueued 200 into the queue.
-[SUCCESS] Enqueued 300 into the queue.
+===== QUEUE USING LINKED LIST =====
+1. Enqueue
+2. Dequeue
+3. Peek
+4. Display
+5. Exit
+Enter your choice: 1
+Enter value: 100
+100 enqueued into queue.
 
---- Queue Contents (Front to Rear) ---
-FRONT -> [100] -> [200] -> [300] <- REAR
-Total Elements in Queue: 3
+Enter your choice: 1
+Enter value: 200
+200 enqueued into queue.
 
-Front element is: 100
-[SUCCESS] Dequeued 100 from the queue.
-FRONT -> [200] -> [300] <- REAR
+Enter your choice: 4
+Queue elements (Front to Rear):
+100 200
+
+Enter your choice: 3
+Front element: 100
+
+Enter your choice: 2
+100 dequeued from queue.
 ```
