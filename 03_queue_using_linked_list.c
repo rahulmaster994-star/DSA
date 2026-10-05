@@ -6,11 +6,10 @@ struct Node {
     struct Node *next;
 };
 
-/* Queue Implementation using LL */
 struct Node *front = NULL;
 struct Node *rear = NULL;
 
-/* Enqueue Operation */
+/* Insert an element into the queue */
 void enqueue() {
     struct Node *newNode;
     newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -18,46 +17,44 @@ void enqueue() {
         printf("Queue Overflow\n");
         return;
     }
+
     printf("Enter value: ");
     scanf("%d", &newNode->data);
     newNode->next = NULL;
 
-    if (front == NULL && rear == NULL) {
-        front = rear = newNode;
+    /* If queue is empty */
+    if (front == NULL) {
+        front = newNode;
+        rear = newNode;
     } else {
         rear->next = newNode;
         rear = newNode;
     }
-    printf("%d enqueued into queue.\n", newNode->data);
+
+    printf("%d inserted into queue.\n", newNode->data);
 }
 
-/* Dequeue Operation */
+/* Delete an element from the queue */
 void dequeue() {
     struct Node *temp;
     if (front == NULL) {
         printf("Queue Underflow\n");
         return;
     }
+
     temp = front;
-    printf("%d dequeued from queue.\n", front->data);
+    printf("%d deleted from queue.\n", front->data);
     front = front->next;
 
+    /* If queue becomes empty */
     if (front == NULL) {
         rear = NULL;
     }
+
     free(temp);
 }
 
-/* Peek Operation */
-void peek() {
-    if (front == NULL) {
-        printf("Queue is empty.\n");
-        return;
-    }
-    printf("Front element: %d\n", front->data);
-}
-
-/* Display Operation */
+/* Display all elements */
 void display() {
     struct Node *temp;
     if (front == NULL) {
@@ -66,7 +63,7 @@ void display() {
     }
 
     temp = front;
-    printf("Queue elements (Front to Rear):\n");
+    printf("Queue: ");
     while (temp != NULL) {
         printf("%d ", temp->data);
         temp = temp->next;
@@ -74,9 +71,20 @@ void display() {
     printf("\n");
 }
 
-/* Main Function */
+/* Show the front element */
+void peek() {
+    if (front == NULL) {
+        printf("Queue is empty.\n");
+        return;
+    }
+
+    printf("Front element: %d\n", front->data);
+}
+
+/* Main function */
 int main() {
     int choice;
+
     while (1) {
         printf("\n===== QUEUE USING LINKED LIST =====\n");
         printf("1. Enqueue\n");
@@ -92,18 +100,23 @@ int main() {
             case 1:
                 enqueue();
                 break;
+
             case 2:
                 dequeue();
                 break;
+
             case 3:
                 peek();
                 break;
+
             case 4:
                 display();
                 break;
+
             case 5:
                 printf("Program terminated.\n");
                 exit(0);
+
             default:
                 printf("Invalid choice.\n");
         }
